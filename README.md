@@ -1,3 +1,3 @@
 # notes
 
-Some guides & ideas about computer.
+some guides & ideas about computer.
