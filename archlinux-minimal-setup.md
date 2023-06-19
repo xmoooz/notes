@@ -1,10 +1,10 @@
 # setup a minimal OS for development
 
 I choose Archlinux, nixos is also good, but the main reason for choosing arch instead of nix is its  community and support.
-After downloading virtualbox app and archlinux iso, define a simple vm by these specs:
-cpu: 4core, ram: 8GB, hdd: 100GB vdi(dynamic allocated)
-iso: archlinux-2023.06.01-x86_64.iso (download the updated version from offical site)
-after you create a vm can change its setting like:
+After downloading virtualbox app and archlinux iso, define a simple vm by these specs:\
+cpu: 4core, ram: 8GB, hdd: 100GB vdi(dynamic allocated)\
+iso: archlinux-2023.06.01-x86_64.iso (download the updated version from offical site)\
+after you create a vm can change its setting like:\
 vga: vmsvga, no shared clipboard, no drag & drop, no audio, floppy disabled in boot order
 after all above, hit start button, now follow the below steps:
 
@@ -91,45 +91,49 @@ select Arch linux Install medium option & hit enter, then:
     after restarting the vm, only run `VBoxClient --clipboard` to enable shared clipboard.
     you can make scripts to automate all things ;)
 33. config time:
-    lets config fish:(define some alias)
+
+    lets config fish:(define some alias)\
     nano ~/.config/fish/config.fish:
-    set fish_greeting
-    alias hdo="shutdown -h now"
-    alias rdo="shutdown -r now"
-    alias ll="ls -la"
-    lets config terminal:
-    create .Xresources file in home dir and add these lines to file:
-    nano ~/.Xresources
-    URxvt.font:xft:Fira Code:size=18
-    ! Dracula Xresources palette
-    *.foreground: #F8F8F2
-    *.background: #282A36
-    *.color0:     #000000
-    *.color1:     #FF5555
-    *.color2:     #50FA7B
-    *.color3:     #F1FA8C
-    *.color4:     #BD93F9
-    *.color5:     #FF79C6
-    *.color6:     #8BE9FD
-    *.color7:     #BFBFBF
-    *.color8:     #4D4D4D
-    *.color9:     #FF6E67
-    *.color10:    #5AF78E
-    *.color11:    #F4F99D
-    *.color12:    #CAA9FA
-    *.color13:    #FF92D0
-    *.color14:    #9AEDFE
-    *.color15:    #E6E6E6
+    set fish_greeting\
+    alias hdo="shutdown -h now"\
+    alias rdo="shutdown -r now"\
+    alias ll="ls -la"\
+
+    lets config terminal:\
+    create .Xresources file in home dir and add these lines to file:\
+    nano ~/.Xresources\
+    URxvt.font:xft:Fira Code:size=18\
+    ! Dracula Xresources palette\
+    *.foreground: #F8F8F2\
+    *.background: #282A36\
+    *.color0:     #000000\
+    *.color1:     #FF5555\
+    *.color2:     #50FA7B\
+    *.color3:     #F1FA8C\
+    *.color4:     #BD93F9\
+    *.color5:     #FF79C6\
+    *.color6:     #8BE9FD\
+    *.color7:     #BFBFBF\
+    *.color8:     #4D4D4D\
+    *.color9:     #FF6E67\
+    *.color10:    #5AF78E\
+    *.color11:    #F4F99D\
+    *.color12:    #CAA9FA\
+    *.color13:    #FF92D0\
+    *.color14:    #9AEDFE\
+    *.color15:    #E6E6E6\
     and after saving it use this command:
     `xrdb ~/.Xresources`
     now if you open new terminal you will new theme and fonts.
+
     lets config i3:
-    nano ~/.config/i3/config:
+    nano ~/.config/i3/config:\
     bar {
             status_command i3status
             font pango:Fira 12
     }
     `exec_always VBoxClient --vmsvga`
+    
     lets config display:
     change gui in virtualbox setting to :vmsvga and zoom to 125%
     then if the result is not what you want(it depends on screedn size), you can change them and also
@@ -152,7 +156,7 @@ select Arch linux Install medium option & hit enter, then:
 43. now it is ready for starting developemnt,
     can download any version of any language by asdf,
     can setup any env in vscode by profiles,
-    can download any docker imgae
+    can download any docker images
     ...
     
 
