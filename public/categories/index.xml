@@ -1,0 +1,24 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>My Weblog </title>
+    <link>http://localhost:1313/notes/categories/</link>
+    <language>en-us</language>
+    <author>Your Name</author>
+    <rights>(C) 2026</rights>
+    <updated>0001-01-01 00:00:00 &#43;0000 UTC</updated>
+
+    
+      <item>
+        <title>My1</title>
+        <link>http://localhost:1313/notes/post/my1/</link>
+        <pubDate>Wed, 04 Nov 2026 21:09:06 &#43;0330</pubDate>
+        <author>Your Name</author>
+        <guid>http://localhost:1313/notes/post/my1/</guid>
+        <description>&lt;p&gt;yek do&lt;/p&gt;
+</description>
+      </item>
+    
+
+  </channel>
+</rss>
+

@@ -1,0 +1,17 @@
+baseURL = "https://xmoooz.github.io/notes/"
+title = "My Weblog"
+theme = "lanyon-hugo"
+
+canonifyURLs = true
+
+[languages.en]
+  weight = 1
+  label = "English"
+
+[params]
+  description = "The weblog of a human"
+  author = "Your Name"
+
+[markup]
+  [markup.highlight]
+    style = "github"
