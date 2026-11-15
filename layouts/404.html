@@ -1,0 +1,15 @@
+{{ partial "default_head.html" . }}
+
+<div class="page">
+  <h1 class="page-title">404</h1>
+  <p>Oops! Sorry, we&rsquo;ve misplaced that URL or it&rsquo;s pointing to something that doesn&rsquo;t exist.</p>
+  <p>Try one of these pages instead:</p>
+  <ul>
+    <li><a href="{{ "/" | relLangURL }}">Home</a></li>
+    <li><a href="{{ "/archives/" | relURL }}">Browse the archive of all posts</a></li>
+    <li><a href="{{ "/categories/" | relURL }}">Browse all the post categories</a></li>
+    <li><a href="{{ "/tags/" | relURL }}">Browse all the content tags</a></li>
+  </ul>
+</div>
+
+{{ partial "default_foot.html" . }}

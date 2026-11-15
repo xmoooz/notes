@@ -1,0 +1,50 @@
+{{- partial "default_head.html" . -}}
+
+<div class="post">
+  <h1 class="post-title">{{ .Title }}</h1>
+  <span class="post-date"><i class="fa fa-calendar" aria-hidden="true"></i>&#160;Published on {{ .Site.Params.DateForm | default "Jan 2, 2006" | .Date.Format }}
+    {{- with .GetTerms "categories" }} &middot;
+    <i class="fa fa-folder-open-o" aria-hidden="true"></i>&#160;Filed in
+    {{ range $index, $term := . }}{{ if $index }}, {{ end }}<a href="{{ $term.RelPermalink }}">{{ $term.LinkTitle }}</a>{{ end }}
+    {{- end }} &middot;
+    <i class="fa fa-pencil" aria-hidden="true"></i>&#160;{{ .WordCount }} words (estimated {{ .ReadingTime }} minutes to read)</span>
+  {{ .Content }}
+
+  <h3>Metadata and Navigation</h3>
+  <span class="post-meta">
+  {{- with .GetTerms "tags" }}
+    {{ range . }}<i class="fa fa-tag" aria-hidden="true"></i>&#160;<a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a> {{ end }}
+  {{- end }}
+
+  {{ with .PrevInSection -}}
+  <br />
+  <i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Previous Post: <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+  {{- end }}
+
+  {{ with .NextInSection -}}
+  <br />
+   <i class="fa fa-arrow-circle-right" aria-hidden="true"></i> Next Post: <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+  {{- end }}
+  </span>
+
+  <span class="post-sharing">
+  <p>Be social and share this post!<br />
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u={{ .Permalink | urlquery }}" title="Share on Facebook"><i class="fa fa-facebook-square fa-2x"></i></a>
+  <a href="https://twitter.com/intent/tweet?url={{ .Permalink | urlquery }}&text={{ .Title | urlquery }}" title="Share on Twitter"><i class="fa fa-twitter-square fa-2x"></i></a></p>
+  </span>
+</div>
+
+{{ $related := .Site.RegularPages.Related . | first 3 -}}
+{{- with $related -}}
+<div class="related">
+  <h3>Related Posts</h3>
+  <ul class="related-posts">
+  {{ range . -}}
+  <li><a href="{{ .RelPermalink }}">{{ .Title }}</a> <span class="post-date-list">{{ .Site.Params.DateForm | default "Jan 2, 2006" | .Date.Format }}</span></li>
+  {{- end }}
+  </ul>
+</div>
+{{- end }}
+
+{{- partial "default_foot.html" . -}}

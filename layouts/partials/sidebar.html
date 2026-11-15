@@ -1,0 +1,30 @@
+<!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <p>{{ .Site.Params.Description }}</p>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a class="sidebar-nav-item {{ if .IsHome }} active {{ end }}" href="{{ "/" | relLangURL }}">Home</a>
+    <a class="sidebar-nav-item" href="{{ "/archives/" | relLangURL }}">Site Archives</a>
+    <a class="sidebar-nav-item" href="{{ "/categories/" | relLangURL }}">Post Categories</a>
+    <a class="sidebar-nav-item" href="{{ "/tags/" | relLangURL }}">Content Tags</a>
+    <a class="sidebar-nav-item" href="{{ "/about/" | relLangURL }}">About</a>
+  </nav>
+
+  <div class="sidebar-item">
+    <p>
+      {{- with .Site.Params.GitHubUser }}
+      <a href="https://github.com/{{ . }}" title="GitHub"><i class="fa fa-github fa-3x"></i></a>
+      {{- end }}
+    </p>
+  </div>
+
+  <div class="sidebar-item">
+    <p>&copy; {{ now.Format "2006" }}. All rights reserved.</p>
+  </div>
+</div>

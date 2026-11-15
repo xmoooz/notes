@@ -1,0 +1,11 @@
+# Hugo build output (built by GitHub Actions, never committed)
+public/
+
+# Hugo caches and locks
+resources/
+.hugo_build.lock
+
+# Editor and OS noise
+*~
+.DS_Store
+Thumbs.db

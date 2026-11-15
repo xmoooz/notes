@@ -1,0 +1,46 @@
+{
+  "baseurl": "https://xmoooz.github.io/notes/",
+  "title": "My Weblog",
+  "locale": "en-us",
+  "theme": "lanyon-hugo",
+  "canonifyURLs": true,
+  "permalinks": {
+    "post": ":year/:month/:day/:title/",
+    "fixed": ":title/"
+  },
+  "related": {
+    "includeNewer": false,
+    "threshold": 80,
+    "toLower": true,
+    "indices": [
+      { "name": "tags", "weight": 100 },
+      { "name": "categories", "weight": 50 }
+    ]
+  },
+  "params": {
+    "Title": "My Weblog",
+    "Tagline": "Notes on software, systems, and whatever I am learning",
+    "Author": "xmoooz",
+    "GitHubUser": "xmoooz",
+    "Description": "Some notes",
+    "DateForm": "2 Jan 2006"
+  },
+  "outputs": {
+    "home": ["HTML"],
+    "section": ["HTML"],
+    "taxonomy": ["HTML"],
+    "term": ["HTML"]
+  },
+  "markup": {
+    "goldmark": {
+      "renderer": {
+        "unsafe": true
+      }
+    },
+    "highlight": {
+      "noClasses": false,
+      "style": "github",
+      "lineNos": false
+    }
+  }
+}

@@ -1,0 +1,53 @@
+{{ partial "default_head.html" . }}
+
+{{- $posts := where .Site.RegularPages "Type" "in" "post" -}}
+
+<div class="posts">
+  {{ if $posts }}
+    <!--Render a summary for the 5 most recent posts-->
+    {{ range first 5 $posts }}
+      <div class="post">
+        <h1 class="post-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h1>
+        <span class="post-date">{{ .Site.Params.DateForm | default "Jan 2, 2006" | .Date.Format }}</span>
+        {{ .Summary }}
+        <p><a class="read-more" href="{{ .RelPermalink }}" aria-label="Read more: {{ .Title }}">Read more <span aria-hidden="true">&rarr;</span></a></p>
+      </div>
+    {{ end }}
+
+    {{- $recent := after 5 $posts -}}
+    {{ with $recent }}
+      <!--Render summaries for next 15 posts-->
+      <h1>Recent Posts</h1>
+      {{ range first 15 . }}
+        <div class="post">
+          <h2 class="post-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+          <span class="post-date">{{ .Site.Params.DateForm | default "Jan 2, 2006" | .Date.Format }}</span>
+          {{ .Summary }}<p><a class="read-more" href="{{ .RelPermalink }}" aria-label="Read more: {{ .Title }}">Read more <span aria-hidden="true">&rarr;</span></a></p>
+        </div>
+      {{ end }}
+    {{ end }}
+
+    {{- $older := after 20 $posts -}}
+    {{ with $older }}
+      <!--Render list of next 30 posts-->
+      <h1>Older Posts</h1>
+      <div class="post">
+        <ul id="list">
+        {{ range first 30 . }}
+          {{ .Render "li2" }}
+        {{ end }}
+        </ul>
+      </div>
+    {{ end }}
+  {{ else }}
+    <div class="post">
+      <h1 class="post-title">No posts yet</h1>
+      <p>Posts will appear here once they are added under <code>content/post/</code>.</p>
+    </div>
+  {{ end }}
+
+  <!--Closing note about how to find other articles-->
+  <div class="post">Find more posts by browsing the <a href="{{ "/categories/" | relURL }}">post categories</a>, <a href="{{ "/tags/" | relURL }}">content tags</a>, or <a href="{{ "/archives/" | relURL }}">site archives</a> pages. Thanks for visiting!</div>
+</div>
+
+{{ partial "default_foot.html" . }}
