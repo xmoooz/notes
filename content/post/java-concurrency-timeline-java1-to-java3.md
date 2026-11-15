@@ -19,9 +19,8 @@ For each version:
 - **What:** What was introduced
 - **Why:** What problem existed before
 - **Benefit:** What it solved
-- **Downside:** What was still bad / interview trap
+- **Downside:** What was still bad
 - **Code:** Minimal working sample
-- **Interview:** What interviewers actually ask
 
 > Note on code: samples use modern syntax (lambdas, diamond operator) for brevity even when describing old APIs. The API and its semantics are what the version section is about.
 
@@ -52,7 +51,7 @@ In 1996 programs were single-threaded. A GUI froze while downloading a file. A s
 
 ---
 
-### 1.0.1 Creating a Thread — Extend Thread vs Implement Runnable [INTERVIEW CORE]
+### 1.0.1 Creating a Thread — Extend Thread vs Implement Runnable
 
 #### Base Is Thread
 
@@ -106,7 +105,7 @@ new MyTask().run(); // This runs in MAIN thread, NOT new thread!
 new Thread(new MyTask()).start(); // This creates new thread
 ```
 
-#### Interview Q: start() vs run()?
+#### start() vs run()?
 > `run()` = normal method call, runs in current thread, no new thread.
 > `start()` = asks JVM to create new thread, then JVM calls `run()` in that new thread. You can call `start()` only once per Thread object, second call throws `IllegalThreadStateException`.
 
@@ -194,7 +193,6 @@ NEW --start()--> RUNNABLE --run() returns--> TERMINATED
 | `TIMED_WAITING` | Waiting with a timeout | `sleep(ms)`, `wait(ms)`, `join(ms)` |
 | `TERMINATED` | `run()` returned or threw | Normal exit |
 
-Interview traps:
 - `RUNNABLE` does not mean "on a CPU right now"; it includes threads blocked in I/O.
 - `BLOCKED` is monitor contention only. A thread inside `wait()` is `WAITING`, not `BLOCKED`.
 - A terminated thread cannot be restarted; a second `start()` throws `IllegalThreadStateException`.
@@ -241,7 +239,6 @@ What the monitor gives you:
 2. **Visibility** — writes before the unlock are visible to the thread that locks next (happens-before).
 3. **Reentrancy** — the same thread can re-enter a block guarded by a monitor it already holds.
 
-Interview notes:
 - A `synchronized` instance method locks `this`; a `static` method locks the `Class` object. They are different monitors.
 - Two threads synchronizing on different objects do not exclude each other.
 - Never lock on `this`, a `String` literal, or a boxed primitive: outside code can lock the same object and interfere.
@@ -277,17 +274,16 @@ class OneSlotBox {
 }
 ```
 
-Rules interviewers look for:
 - `wait()`/`notify()` must be called while holding the object's monitor, otherwise `IllegalMonitorStateException`.
 - Always wait in a `while` loop, never an `if`: spurious wakeups are allowed, and another thread may consume the condition first.
 - Prefer `notifyAll()` when waiters wait on different conditions. `notify()` may wake the "wrong" waiter, which goes back to waiting while the real waiter sleeps forever.
 - The condition (`full`) must be guarded by the same monitor as the data.
 - `wait()` is an `Object` method; `sleep()` is a `Thread` method.
 
-#### Interview Q: Why while, not if, for wait()?
+#### Why while, not if, for wait()?
 > Because of Spurious Wakeup — thread can wake up without notify(). And because after waking, condition may have been changed by another thread. Always re-check in `while`.
 
-#### Interview Q: sleep() vs wait()?
+#### sleep() vs wait()?
 | | `sleep()` | `wait()` |
 | :--- | :--- | :--- |
 | Releases lock? | No | Yes |
@@ -317,7 +313,7 @@ Fixes:
 3. **Use timed `tryLock`** — only available from Java 5 (`ReentrantLock`), not with `synchronized`.
 4. **Diagnose** with `jstack <pid>`; it prints "Found one Java-level deadlock" with the two thread stacks.
 
-Interview note: a `synchronized` deadlock cannot be broken from Java code in this era — there is no lock timeout and `Thread.stop()` is unsafe. Prevention is the only option.
+a `synchronized` deadlock cannot be broken from Java code in this era — there is no lock timeout and `Thread.stop()` is unsafe. Prevention is the only option.
 
 ### 1.0.6 `interrupt()` — Cooperative Cancellation
 
@@ -420,7 +416,7 @@ No new locks, pools, or synchronization primitives. Java 1.1 added:
 
 ---
 
-### 1.2.1 ThreadLocal — Deep Dive [INTERVIEW CORE]
+### 1.2.1 ThreadLocal — Deep Dive
 
 #### What Is It?
 `ThreadLocal` is a variable where **each thread has its own separate copy**.
@@ -525,7 +521,7 @@ new Thread(() -> {
 
 Use it when you spawn a child thread and want it to see parent's context.
 
-#### Biggest Danger — Memory Leak in Thread Pools [INTERVIEW #1]
+#### Biggest Danger — Memory Leak in Thread Pools
 
 In normal threads, when thread dies, its map dies too. No leak.
 
@@ -551,12 +547,12 @@ try {
 }
 ```
 
-#### Interview Q: Why does ThreadLocal cause memory leak?
+#### Why does ThreadLocal cause memory leak?
 > Because Thread holds strong reference to ThreadLocalMap, and Map holds value. In a pool, Thread never dies, so value never GC'd. And ThreadLocal key is WeakReference, so key can be GC'd but value stays -> leak. Fix: `remove()` in `finally`.
 
 ---
 
-### 1.2.2 volatile vs ThreadLocal [INTERVIEW CORE]
+### 1.2.2 volatile vs ThreadLocal
 
 They solve **opposite** problems.
 
@@ -669,9 +665,9 @@ Guarantees:
 2. **Ordering** — no reordering across the volatile access (happens-before).
 3. **Atomicity of a single read or write** — but **not** of `count++`.
 
-Interview trap: `volatile` does not replace `synchronized` for invariants that span multiple fields. Use it for one independent flag or state field, not for compound updates.
+`volatile` does not replace `synchronized` for invariants that span multiple fields. Use it for one independent flag or state field, not for compound updates.
 
-#### Interview Q: What does volatile guarantee?
+#### What does volatile guarantee?
 > Visibility, ordering (happens-before), and atomicity of the individual read/write. It does not give mutual exclusion and does not make compound actions atomic.
 
 ### 1.2.4 Synchronized Collections — and Their Traps
@@ -753,7 +749,7 @@ Runtime.getRuntime().addShutdownHook(new Thread(() -> {
 }));
 ```
 
-### Interview Q: Why is `java.util.Timer` considered legacy?
+### Why is `java.util.Timer` considered legacy?
 > It runs every task on a single thread, has no exception isolation, and has no real pool. One failing task cancels the schedule. Use `ScheduledExecutorService` (Java 5) instead.
 
 ---
