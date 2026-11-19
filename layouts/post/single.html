@@ -3,6 +3,7 @@
 <div class="post">
   <h1 class="post-title">{{ .Title }}</h1>
   <span class="post-date"><i class="fa fa-calendar" aria-hidden="true"></i>&#160;Published on {{ .Site.Params.DateForm | default "Jan 2, 2006" | .Date.Format }}
+    {{- if .Lastmod.After .Date }} &middot; <i class="fa fa-refresh" aria-hidden="true"></i>&#160;Updated on {{ .Site.Params.DateForm | default "Jan 2, 2006" | .Lastmod.Format }}{{ end }}
     {{- with .GetTerms "categories" }} &middot;
     <i class="fa fa-folder-open-o" aria-hidden="true"></i>&#160;Filed in
     {{ range $index, $term := . }}{{ if $index }}, {{ end }}<a href="{{ $term.RelPermalink }}">{{ $term.LinkTitle }}</a>{{ end }}
@@ -25,13 +26,6 @@
   <br />
    <i class="fa fa-arrow-circle-right" aria-hidden="true"></i> Next Post: <a href="{{ .RelPermalink }}">{{ .Title }}</a>
   {{- end }}
-  </span>
-
-  <span class="post-sharing">
-  <p>Be social and share this post!<br />
-
-  <a href="https://www.facebook.com/sharer/sharer.php?u={{ .Permalink | urlquery }}" title="Share on Facebook"><i class="fa fa-facebook-square fa-2x"></i></a>
-  <a href="https://twitter.com/intent/tweet?url={{ .Permalink | urlquery }}&text={{ .Title | urlquery }}" title="Share on Twitter"><i class="fa fa-twitter-square fa-2x"></i></a></p>
   </span>
 </div>
 

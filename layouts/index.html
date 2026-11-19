@@ -8,7 +8,7 @@
     {{ range first 5 $posts }}
       <div class="post">
         <h1 class="post-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h1>
-        <span class="post-date">{{ .Site.Params.DateForm | default "Jan 2, 2006" | .Date.Format }}</span>
+        <span class="post-date">{{ .Site.Params.DateForm | default "Jan 2, 2006" | .Date.Format }}{{ if .Lastmod.After .Date }} &middot; Updated {{ .Site.Params.DateForm | default "Jan 2, 2006" | .Lastmod.Format }}{{ end }}</span>
         {{ .Summary }}
         <p><a class="read-more" href="{{ .RelPermalink }}" aria-label="Read more: {{ .Title }}">Read more <span aria-hidden="true">&rarr;</span></a></p>
       </div>
@@ -21,7 +21,7 @@
       {{ range first 15 . }}
         <div class="post">
           <h2 class="post-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
-          <span class="post-date">{{ .Site.Params.DateForm | default "Jan 2, 2006" | .Date.Format }}</span>
+          <span class="post-date">{{ .Site.Params.DateForm | default "Jan 2, 2006" | .Date.Format }}{{ if .Lastmod.After .Date }} &middot; Updated {{ .Site.Params.DateForm | default "Jan 2, 2006" | .Lastmod.Format }}{{ end }}</span>
           {{ .Summary }}<p><a class="read-more" href="{{ .RelPermalink }}" aria-label="Read more: {{ .Title }}">Read more <span aria-hidden="true">&rarr;</span></a></p>
         </div>
       {{ end }}

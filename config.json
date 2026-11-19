@@ -1,6 +1,6 @@
 {
   "baseurl": "https://xmoooz.github.io/notes/",
-  "title": "My Weblog",
+  "title": "A blog",
   "locale": "en-us",
   "theme": "lanyon-hugo",
   "canonifyURLs": true,
@@ -18,8 +18,8 @@
     ]
   },
   "params": {
-    "Title": "My Weblog",
-    "Tagline": "Notes on software, systems, and whatever I am learning",
+    "Title": "A blog",
+    "Tagline": "Notes on mostly softwares",
     "Author": "xmoooz",
     "GitHubUser": "xmoooz",
     "Description": "Some notes",
