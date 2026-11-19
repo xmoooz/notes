@@ -1,7 +1,7 @@
 ---
 title: "Java Thread & Concurrency Timeline: Java1 to Java4"
-date: 2026-11-18T23:30:00Z
-lastmod: 2026-11-18T23:30:00Z
+date: 2026-11-01T23:30:00Z
+lastmod: 2026-11-01T23:30:00Z
 draft: false
 categories: ["java", "concurrency", "timeline"]
 tags: ["java", "concurrency", "timeline", "threads", "threadlocal", "volatile", "nio", "java1", "java2", "java3", "java4"]
@@ -858,6 +858,3 @@ Need periodic task?
 Need 10k connections?
   └─ Reactor (Selector) + Worker Pool, never thread-per-connection
 ```
-
-### Next in Series
-**Part 2: Java 5 — `java.util.concurrent` finally arrives.** `ExecutorService`, `Future`, `ReentrantLock`, `ConcurrentHashMap`, `CountDownLatch`, `Semaphore`, `BlockingQueue`. The release that fixed almost everything in Part 1.
