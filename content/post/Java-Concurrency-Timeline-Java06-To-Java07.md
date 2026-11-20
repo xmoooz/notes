@@ -8,7 +8,7 @@ tags: ["java", "concurrency", "timeline", "threads", "forkjoin", "phaser", "nio"
 series: ["java concurrency timeline"]
 author: "xmoooz"
 description: "Java 6 and Java 7 concurrency: JVM lock optimizations, BlockingDeque, ForkJoinPool and work-stealing, Phaser, ThreadLocalRandom, TransferQueue, and NIO.2 asynchronous I/O."
-url: 2026/11/15/java-concurrency-timeline-java6-to-java7
+url: 2026/11/03/java-concurrency-timeline-java6-to-java7
 ---
 
 ## 0. Global Vision — Java 6 to Java 7 in 2 Minutes
