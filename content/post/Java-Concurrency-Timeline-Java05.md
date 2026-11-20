@@ -1,7 +1,7 @@
 ---
 title: "Java Thread & Concurrency Timeline: Java5"
 date: 2026-11-02T23:30:00Z
-lastmod: 2026-11-02T23:30:00Z
+lastmod: 2026-11-03T23:30:00Z
 draft: false
 categories: ["java", "concurrency", "timeline"]
 tags: ["java", "concurrency", "timeline", "threads", "executors", "locks", "atomics", "java5"]
@@ -12,8 +12,6 @@ url: 2026/11/19/java-concurrency-timeline-java5
 ---
 
 > This is the Doug Lea release. Modern Java concurrency starts here.
-
-> **How to read this post:** Start with the Global Vision. Each section then follows the same pattern: What / Why / Still Use? / Never Use / Code / Best Practice / Tips. Skim the Cheat Sheet at the end.
 
 ---
 

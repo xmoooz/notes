@@ -1,7 +1,7 @@
 ---
 title: "Java Thread & Concurrency Timeline: Java1 to Java4"
 date: 2026-11-01T23:30:00Z
-lastmod: 2026-11-01T23:30:00Z
+lastmod: 2026-11-03T23:30:00Z
 draft: false
 categories: ["java", "concurrency", "timeline"]
 tags: ["java", "concurrency", "timeline", "threads", "threadlocal", "volatile", "nio", "java1", "java2", "java3", "java4"]
@@ -11,12 +11,6 @@ description: "history of Java threads and concurrency from JDK 1.0 through JDK 1
 url: 2026/11/18/java-concurrency-timeline-java1-to-java4
 aliases:
   - /2026/11/18/java-concurrency-timeline-java1-to-java4/
----
-
-> Part 1 of the Java Concurrency Timeline — JDK 1.0 through 1.4. There was never an official "Java 3" release. JDK 1.2 was rebranded "Java 2", then came J2SE 1.3, J2SE 1.4, then Java 5.
-
-> **How to read this post:** Start with the Global Vision. Each version then follows the same pattern: What / Why / Still Use? / Never Use / Code / Best Practice / Tips. Skim the Cheat Sheet at the end.
-
 ---
 
 ## 0. Global Vision — The Whole Story in 2 Minutes
