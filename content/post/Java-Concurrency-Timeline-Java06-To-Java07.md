@@ -515,5 +515,3 @@ Need I/O without blocking thread?
   ├─ Poll readiness? -> Selector (Java 1.4)
   └─ Get notified on completion? -> NIO.2 Async + CompletionHandler
 ```
-
----
